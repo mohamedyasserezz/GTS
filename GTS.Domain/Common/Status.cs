@@ -1,4 +1,4 @@
-﻿namespace GTS.Domain.Common
+﻿namespace GTS.ToDo.Domain.Common
 {
     public enum  Status
     {
