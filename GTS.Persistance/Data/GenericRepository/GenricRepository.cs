@@ -1,0 +1,50 @@
+﻿using GTS.TaskManagement.Persistance.Data;
+using Microsoft.EntityFrameworkCore;
+using GTS.TaskManagement.Domain.Contract.Persistance;
+using GTS.Domain.Contract;
+
+namespace GTS.Persistance.Data.GenericRepository
+{
+    internal class GenericRepository<TEntity>(ApplicationDbContext _dbContext) : IGenricRepository<TEntity>
+        where TEntity : class
+    {
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync(bool withTracking = false, CancellationToken cancellationToken = default)
+        {
+            return withTracking ?
+                await _dbContext.Set<TEntity>().ToListAsync(cancellationToken) :
+                await _dbContext.Set<TEntity>().AsNoTracking().ToListAsync(cancellationToken);
+        }
+
+        public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<TEntity>().FindAsync(id, cancellationToken);
+        }
+
+        public async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            await _dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _dbContext.Set<TEntity>().Update(entity);
+        }
+        public void Delete(TEntity entity)
+        {
+            _dbContext.Remove(entity);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllWithSpecAsync(ISpecification<TEntity> specifications, bool withTracking = false, CancellationToken cancellationToken = default)
+        => await ApplySpecification(specifications).ToListAsync();
+
+        public async Task<int> GetCountWithSpecAsync(ISpecification<TEntity> specifications, bool withTracking = false, CancellationToken cancellationToken = default)
+        => await ApplySpecification(specifications).CountAsync();
+
+        public async Task<TEntity?> GetWithSpecAsync(ISpecification<TEntity> specifications)
+        => await ApplySpecification(specifications).FirstOrDefaultAsync();
+
+        private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> specifications)
+          => SpecificationEvaluator<TEntity>.GetQuery(_dbContext.Set<TEntity>(), specifications);
+    }
+}
