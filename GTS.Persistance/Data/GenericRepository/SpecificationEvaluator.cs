@@ -1,4 +1,4 @@
-﻿using GTS.Domain.Contract;
+﻿using GTS.TaskManagement.Domain.Contract;
 using Microsoft.EntityFrameworkCore;
 
 namespace GTS.Persistance.Data.GenericRepository

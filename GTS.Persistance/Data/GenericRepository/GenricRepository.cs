@@ -1,7 +1,7 @@
-﻿using GTS.TaskManagement.Persistance.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using GTS.TaskManagement.Domain.Contract;
 using GTS.TaskManagement.Domain.Contract.Persistance;
-using GTS.Domain.Contract;
+using GTS.TaskManagement.Persistance.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GTS.Persistance.Data.GenericRepository
 {
@@ -16,23 +16,29 @@ namespace GTS.Persistance.Data.GenericRepository
                 await _dbContext.Set<TEntity>().AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<TEntity?> GetByIdAsync(string id, CancellationToken cancellationToken = default)
         {
             return await _dbContext.Set<TEntity>().FindAsync(id, cancellationToken);
         }
 
-        public async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<bool> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             await _dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
+
+            return await _dbContext.SaveChangesAsync(cancellationToken) > 0;    
         }
 
-        public void Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
+
+            return _dbContext.SaveChanges() > 0;
         }
-        public void Delete(TEntity entity)
+        public bool Delete(TEntity entity)
         {
             _dbContext.Remove(entity);
+
+            return _dbContext.SaveChanges() > 0;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllWithSpecAsync(ISpecification<TEntity> specifications, bool withTracking = false, CancellationToken cancellationToken = default)
