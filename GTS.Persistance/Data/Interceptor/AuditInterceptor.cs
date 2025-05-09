@@ -1,4 +1,4 @@
-﻿using GTS.TaskManagement.Domain.Common;
+﻿using GTS.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 namespace GTS.TaskManagement.Persistance.Data.Interceptor

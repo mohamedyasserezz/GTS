@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace GTS.Domain.Contract
+namespace GTS.TaskManagement.Domain.Contract
 {
     public interface ISpecification<TEntity>
     {

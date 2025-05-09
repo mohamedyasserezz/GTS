@@ -1,6 +1,4 @@
-﻿using GTS.Domain.Contract;
-
-namespace GTS.TaskManagement.Domain.Contract.Persistance
+﻿namespace GTS.TaskManagement.Domain.Contract.Persistance
 {
     public interface IGenricRepository<TEntity>
     where TEntity : class
