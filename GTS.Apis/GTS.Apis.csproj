@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GTS.Application\GTS.Application.csproj" />
+  </ItemGroup>
+
 </Project>
