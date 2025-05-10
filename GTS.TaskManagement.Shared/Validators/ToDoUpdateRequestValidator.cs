@@ -29,11 +29,11 @@ namespace GTS.TaskManagement.Shared.Validators
                 .Must(ValidatorsHelpers.IsValidStatus)
                 .WithMessage("Status must be one of the following: InProgress, Pending, Completed.");
 
-            When(x => x.DueDate.HasValue, () =>
+            When(x => !string.IsNullOrEmpty(x.DueDate), () =>
             {
                 RuleFor(x => x.DueDate)
                     .Must(ValidatorsHelpers.BeAValidDueDate)
-                    .WithMessage("Due date must be a valid date.");
+                    .WithMessage("Due date must be a valid date and be in the future");
             });
             
         }

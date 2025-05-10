@@ -11,6 +11,6 @@ namespace GTS.TaskManagement.Shared.Models
     string? Description,
     string Priority,
     string Status,
-    DateTime? DueDate
+    string? DueDate
     );
 }

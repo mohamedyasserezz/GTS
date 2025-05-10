@@ -7,7 +7,7 @@ namespace GTS.TaskManagement.Shared
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static IServiceCollection AddASharedDependences(this IServiceCollection services)
         {
             services
                  .AddFluentValidationAutoValidation()

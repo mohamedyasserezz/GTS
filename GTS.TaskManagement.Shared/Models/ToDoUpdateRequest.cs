@@ -6,6 +6,6 @@
         string? Description,
         string Priority,
         string Status,
-        DateTime? DueDate
+        string? DueDate
         );
 }

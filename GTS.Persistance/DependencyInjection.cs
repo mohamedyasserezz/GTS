@@ -11,6 +11,8 @@ namespace GTS.TaskManagement.Persistance
     {
         public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
         {
+
+            services.AddScoped(typeof(AuditInterceptor));
             services.AddDbContext<ApplicationDbContext>((serviceProvider, optionsBuilder) =>
             {
                 optionsBuilder

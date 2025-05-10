@@ -18,7 +18,7 @@ namespace GTS.Persistance.Data.GenericRepository
 
         public async Task<TEntity?> GetByIdAsync(string id, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.Set<TEntity>().FindAsync(id, cancellationToken);
+            return await _dbContext.Set<TEntity>().FindAsync(Guid.Parse(id), cancellationToken);
         }
 
         public async Task<bool> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
