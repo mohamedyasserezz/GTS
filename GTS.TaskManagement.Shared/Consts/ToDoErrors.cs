@@ -15,6 +15,6 @@ namespace GTS.TaskManagement.Shared.Consts
             = new("ToDo.NotUpdated", "ToDo not updated", StatusCodes.Status400BadRequest);
 
         public static readonly Error NotDeleted
-            = new(new("ToDo.NotDeleted", "ToDo not deleted", StatusCodes.Status400BadRequest);
+            = new("ToDo.NotDeleted", "ToDo not deleted", StatusCodes.Status400BadRequest);
     }
 }
