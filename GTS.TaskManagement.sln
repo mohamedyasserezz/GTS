@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTS.Apis", "GTS.Apis\GTS.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTS.TaskManagement.Shared", "GTS.TaskManagement.Shared\GTS.TaskManagement.Shared.csproj", "{FF1D3262-1601-476F-BAFF-74D074758D18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B3202E3C-1196-4D7C-A593-8808D892C8D3}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +65,7 @@ Global
 		{9D220AB0-F218-4AC5-85A2-7E5E41B836C7} = {C692433B-65CF-469A-8BF7-D989EEDD6DA0}
 		{B416F1AD-5439-44DE-BC8E-1CC35E5D6647} = {5A92A23C-FFE0-4EBE-ADFA-6E2971EE2E4B}
 		{FF1D3262-1601-476F-BAFF-74D074758D18} = {DFA955D2-D6DD-4977-9080-E8A4A128A20A}
+		{B3202E3C-1196-4D7C-A593-8808D892C8D3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6D37061-DB9E-4E57-85D7-001AF7886A9A}
