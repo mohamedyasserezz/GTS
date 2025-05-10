@@ -1,3 +1,4 @@
+using GTS.Apis;
 using GTS.Application;
 using GTS.TaskManagement.Persistance;
 using GTS.TaskManagement.Shared;
@@ -14,7 +15,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistance(builder.Configuration)
     .AddASharedDependences()
-    .AddApplication();
+    .AddApplication()
+    .AddApis();
 
 builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
 {

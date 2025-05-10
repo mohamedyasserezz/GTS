@@ -46,7 +46,7 @@ namespace GTS.Application.Services
         {
             _logger.LogInformation("Getting all ToDo with status: {status}", statusFilter.Status);
 
-            var specification = new Specification<ToDo>(x => x.Status == Enum.Parse<Status>(statusFilter.Status));
+            var specification = new Specification<ToDo>(x => x.Status == Enum.Parse<Status>(statusFilter.Status, true));
 
             var toDos = await _repository.GetAllWithSpecAsync(specification, withTracking, cancellationToken);
 

@@ -28,7 +28,7 @@ namespace GTS.Apis.Controllers
         }
 
         [HttpGet("status")]
-        public async Task<IActionResult> GetBasedOnStatus(ToDoStatusFilter statusFilter, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetBasedOnStatus([FromQuery]ToDoStatusFilter statusFilter, CancellationToken cancellationToken)
         {
             var result = await _toDoServices.GetAllToDosBasedOnStatusAsync(statusFilter, cancellationToken);
 
@@ -36,7 +36,7 @@ namespace GTS.Apis.Controllers
         }
 
         [HttpGet("priority")]
-        public async Task<IActionResult> GetBasedOnPriority(ToDoPriorityFilter priorityFilter, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetBasedOnPriority([FromQuery]ToDoPriorityFilter priorityFilter, CancellationToken cancellationToken)
         {
             var result = await _toDoServices.GetAllToDosBasedOnPriorityAsync(priorityFilter, cancellationToken);
 
